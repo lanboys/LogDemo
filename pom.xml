@@ -11,26 +11,30 @@
 
     <dependencies>
         <!-- Log4J -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.6.2</version>
-        </dependency>
+        <!-- 配置文件log4j.xml -->
+
+        <!--<dependency>-->
+            <!--<groupId>log4j</groupId>-->
+            <!--<artifactId>log4j</artifactId>-->
+            <!--<version>1.2.17</version>-->
+        <!--</dependency>-->
+
+        <!-- Log4J2 -->
+        <!-- 配置文件log4j2.xml -->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-core</artifactId>-->
+            <!--<version>2.6.2</version>-->
+        <!--</dependency>-->
+
 
         <!--  SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
               SLF4J: Defaulting to no-operation (NOP) logger implementation
               SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details. -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.20</version>
-        </dependency>
-
-        <!-- LogBack -->
         <!--<dependency>-->
-        <!--<groupId>ch.qos.logback</groupId>-->
-        <!--<artifactId>logback-classic</artifactId>-->
-        <!--<version>1.1.7</version>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-api</artifactId>-->
+        <!--<version>1.7.20</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
@@ -38,6 +42,30 @@
         <!--<artifactId>slf4j-jdk14</artifactId>-->
         <!--<version>1.7.20</version>-->
         <!--</dependency>-->
+
+
+        <!-- 配置文件log4j.xml -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.20</version>
+        </dependency>
+
+        <!-- 配置文件log4j2.xml -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+
+        <!-- LogBack -->
+        <!-- 配置文件logback.xml -->
+        <!--<dependency>-->
+        <!--<groupId>ch.qos.logback</groupId>-->
+        <!--<artifactId>logback-classic</artifactId>-->
+        <!--<version>1.1.7</version>-->
+        <!--</dependency>-->
+
     </dependencies>
 
 </project>

@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<Configuration>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
+    <Appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <Layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
-        </layout>
-    </appender>
+        </Layout>
+    </Appender>
 
-    <logger name="com.bing" level="TRACE"/>
+    <Appender name="BING" class="ch.qos.logback.core.ConsoleAppender">
+        <Layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </Layout>
+    </Appender>
 
-    <root level="debug">
-        <appender-ref ref="STDOUT"/>
-    </root>
+    <Appender name="LAN" class="ch.qos.logback.core.ConsoleAppender">
+        <Layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} 0-0 %msg%n</Pattern>
+        </Layout>
+    </Appender>
 
-</configuration>
+    <!--<Logger name="com.bing" level="TRACE">-->
+        <!--<Appender-ref ref="BING"/>-->
+    <!--</Logger>-->
+
+    <!--<Logger name="com.lan" level="TRACE">-->
+        <!--<Appender-ref ref="LAN"/>-->
+    <!--</Logger>-->
+
+    <ROOT level="DEBUG">
+        <Appender-ref ref="STDOUT"/>
+    </ROOT>
+
+</Configuration>
