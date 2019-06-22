@@ -1,4 +1,4 @@
-package com.bing.lan.log.slf4j;
+package com.bing.lan.log.slf4j.cons;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +11,6 @@ public class ConsoleLog {
 
     public ConsoleLog() {
         Logger logger = LoggerFactory.getLogger(this.getClass());
-        logger.warn("Console Log Test");
+        logger.debug("Console Log Test");
     }
 }

@@ -1,5 +1,7 @@
 package com.bing.lan.log.slf4j;
 
+import com.bing.lan.log.slf4j.cons.ConsoleLog;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

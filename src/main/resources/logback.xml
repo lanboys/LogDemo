@@ -19,7 +19,7 @@
     </Appender>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>testFile.log</file>
+        <file>${LOG_HOME}/testFile.log</file>
         <append>true</append>
         <encoder>
             <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
@@ -27,14 +27,17 @@
     </appender>
 
 
-    <logger name="com.bing.lan.log.slf4j.ConsoleLog" level="DEBUG" additivity = "false" >
+    <logger name="com.bing.lan.log.slf4j.cons.ConsoleLog">
         <Appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="com.bing.lan.log.slf4j.cons" additivity="false">
+        <Appender-ref ref="FILE"/>
     </logger>
     <logger name="com.bing.lan.log.slf4j.FileLog" level="DEBUG">
         <Appender-ref ref="FILE"/>
     </logger>
 
-    <ROOT level="DEBUG">
+    <ROOT level="INFO">
         <!--<Appender-ref ref="STDOUT"/>-->
         <!--<Appender-ref ref="FILE"/>-->
     </ROOT>
