@@ -14,17 +14,17 @@
         <!-- 配置文件log4j.xml -->
 
         <!--<dependency>-->
-            <!--<groupId>log4j</groupId>-->
-            <!--<artifactId>log4j</artifactId>-->
-            <!--<version>1.2.17</version>-->
+        <!--<groupId>log4j</groupId>-->
+        <!--<artifactId>log4j</artifactId>-->
+        <!--<version>1.2.17</version>-->
         <!--</dependency>-->
 
         <!-- Log4J2 -->
         <!-- 配置文件log4j2.xml -->
         <!--<dependency>-->
-            <!--<groupId>org.apache.logging.log4j</groupId>-->
-            <!--<artifactId>log4j-core</artifactId>-->
-            <!--<version>2.6.2</version>-->
+        <!--<groupId>org.apache.logging.log4j</groupId>-->
+        <!--<artifactId>log4j-core</artifactId>-->
+        <!--<version>2.6.2</version>-->
         <!--</dependency>-->
 
 
@@ -45,26 +45,53 @@
 
 
         <!-- 配置文件log4j.xml -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.20</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-log4j12</artifactId>-->
+        <!--<version>1.7.20</version>-->
+        <!--</dependency>-->
 
         <!-- 配置文件log4j2.xml -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.6.2</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.apache.logging.log4j</groupId>-->
+        <!--<artifactId>log4j-slf4j-impl</artifactId>-->
+        <!--<version>2.6.2</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.apache.logging.log4j</groupId>-->
+        <!--<artifactId>log4j-core</artifactId>-->
+        <!--<version>2.6.2</version>-->
+        <!--</dependency>-->
 
         <!-- LogBack -->
         <!-- 配置文件logback.xml -->
+        <!--//打印 Logback 内部状态-->
+        <!--LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();-->
+        <!--StatusPrinter.print(lc);-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.0.11</version>
+        </dependency>
+
+        <!-- 桥接日志 -->
         <!--<dependency>-->
-        <!--<groupId>ch.qos.logback</groupId>-->
-        <!--<artifactId>logback-classic</artifactId>-->
-        <!--<version>1.1.7</version>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>log4j-over-slf4j</artifactId>-->
+        <!--<version>1.7.20</version>-->
         <!--</dependency>-->
+        <!-- jul-to-slf4j 桥接方式1：添加代码-->
+        <!--SLF4JBridgeHandler.removeHandlersForRootLogger();-->
+        <!--SLF4JBridgeHandler.install();-->
+        <!-- jul-to-slf4j 桥接方式2：在配置文件logging.properties配置(不起作用)
+        https://www.slf4j.org/api/org/slf4j/bridge/SLF4JBridgeHandler.html
+        -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>1.7.20</version>
+        </dependency>
+
 
     </dependencies>
 

@@ -9,14 +9,25 @@ import org.slf4j.LoggerFactory;
 
 public class Slf4jLog {
 
-    private final static Logger logger = LoggerFactory.getLogger(Slf4jLog.class);
+    //private final static Logger logger = LoggerFactory.getLogger(Slf4jLog.class);
+    //private final static Logger rootLogger = LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
 
     public static void main(String[] args) {
 
-        logger.trace("Trace Level.");
-        logger.debug("Debug Level.");
-        logger.info("Info Level.");
-        logger.warn("Warn Level.");
+        Logger logger = LoggerFactory.getLogger(Slf4jLog.class);
+        Logger rootLogger = LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
+
+        //logger.trace("Trace Level.");
+        //logger.debug("Debug Level.");
+        //logger.info("Info Level.");
+        //logger.warn("Warn Level.");
         logger.error("Error Level.");
+
+        new ConsoleLog();
+        new FileLog();
+
+        //打印 Logback 内部状态
+        //LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+        //StatusPrinter.print(lc);
     }
 }
