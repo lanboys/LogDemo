@@ -25,8 +25,16 @@ public class Slf4jLog {
         //logger.warn("Warn Level.");
         logger.error("Error Level.");
 
-        new ConsoleLog();
-        new FileLog();
+        while (true) {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            new ConsoleLog();
+            new FileLog();
+        }
 
         //打印 Logback 内部状态
         //LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();

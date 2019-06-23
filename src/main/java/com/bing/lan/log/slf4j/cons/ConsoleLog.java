@@ -11,6 +11,10 @@ public class ConsoleLog {
 
     public ConsoleLog() {
         Logger logger = LoggerFactory.getLogger(this.getClass());
-        logger.debug("Console Log Test");
+        logger.trace("Console trace Log Test");
+        logger.debug("Console debug Log Test");
+        logger.info("Console info Log Test");
+        logger.warn("Console warn Log Test");
+        logger.error("Console error Log Test");
     }
 }

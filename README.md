@@ -1,6 +1,7 @@
 # LogDemo
 
 
+[logback节点配置详解](https://www.cnblogs.com/DeepLearing/p/5663178.html)
 [logback的使用和logback.xml详解](https://www.cnblogs.com/warking/p/5710303.html)
 [logback 配置详解](https://www.jianshu.com/p/1ded57f6c4e3)
 [java 日志框架总结](https://www.cnblogs.com/baizhanshi/p/7911123.html)
