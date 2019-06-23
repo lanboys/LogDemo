@@ -11,7 +11,12 @@ public class FileLog {
 
     public FileLog() {
         Logger logger = LoggerFactory.getLogger(this.getClass());
-        logger.warn("File Log Test");
+
+        logger.trace("File trace Log Test");
+        logger.debug("File debug Log Test");
+        logger.info("File info Log Test");
+        logger.warn("File warn Log Test");
+        logger.error("File error Log Test");
     }
 }
 
