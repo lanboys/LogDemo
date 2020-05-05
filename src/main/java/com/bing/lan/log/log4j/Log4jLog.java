@@ -12,6 +12,9 @@ import org.apache.log4j.Logger;
  * https://www.cnblogs.com/manayi/p/9570411.html
  * <p>
  * 不支持使用占位符，不利于代码阅读
+ * <p>
+ * 默认配置文件名
+ * LogManager.DEFAULT_XML_CONFIGURATION_FILE
  */
 
 public class Log4jLog {
