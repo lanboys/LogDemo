@@ -25,5 +25,13 @@
             <version>2.13.2</version>
         </dependency>
 
+        <!-- LogBack -->
+        <!-- 配置文件logback.xml或者logback-test.xml -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
     </dependencies>
 </project>
