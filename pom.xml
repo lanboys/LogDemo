@@ -27,10 +27,17 @@
 
         <!-- LogBack -->
         <!-- 配置文件logback.xml或者logback-test.xml -->
+        <!--        <dependency>-->
+        <!--            <groupId>ch.qos.logback</groupId>-->
+        <!--            <artifactId>logback-classic</artifactId>-->
+        <!--            <version>1.2.3</version>-->
+        <!--        </dependency>-->
+
+        <!-- 使用jul作为slf4j的实现  -->
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.30</version>
         </dependency>
 
     </dependencies>
