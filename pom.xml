@@ -11,11 +11,11 @@
     <dependencies>
         <!-- Log4J -->
         <!-- 配置文件log4j.xml -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>log4j</groupId>-->
+        <!--            <artifactId>log4j</artifactId>-->
+        <!--            <version>1.2.17</version>-->
+        <!--        </dependency>-->
 
         <!-- Log4J2 -->
         <!-- 配置文件log4j2.xml -->
@@ -27,11 +27,12 @@
 
         <!-- LogBack -->
         <!-- 配置文件logback.xml或者logback-test.xml -->
-        <!--        <dependency>-->
-        <!--            <groupId>ch.qos.logback</groupId>-->
-        <!--            <artifactId>logback-classic</artifactId>-->
-        <!--            <version>1.2.3</version>-->
-        <!--        </dependency>-->
+        <!-- 日志组件logback与slf4j的集成依赖，各桥接器的重定向最终流向logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
 
         <!-- 使用jul作为slf4j的实现  -->
         <!--        <dependency>-->
@@ -48,9 +49,30 @@
         <!--        </dependency>-->
 
         <!-- 使用log4j2作为slf4j的实现 -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-slf4j-impl</artifactId>-->
+        <!--            <version>2.13.2</version>-->
+        <!--        </dependency>-->
+
+        <!-- JUL桥接器，将jul的日志输出重定向到slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
+        <!-- log4j桥接器，将log4j的日志输出重定向到slf4j  -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
+        <!-- log4j2桥接器，将log4j2的日志输出重定向到slf4j  -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
+            <artifactId>log4j-to-slf4j</artifactId>
             <version>2.13.2</version>
         </dependency>
     </dependencies>
