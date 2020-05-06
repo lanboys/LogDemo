@@ -56,6 +56,9 @@
         <!--        </dependency>-->
 
         <!-- JUL桥接器，将jul的日志输出重定向到slf4j -->
+        <!--        详情见 JDKLog     -->
+        <!--        SLF4JBridgeHandler.removeHandlersForRootLogger();-->
+        <!--        SLF4JBridgeHandler.install();-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>

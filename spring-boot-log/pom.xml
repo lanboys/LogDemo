@@ -23,7 +23,71 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!--            <exclusions>-->
+            <!--                <exclusion>-->
+            <!--                    <artifactId>spring-boot-starter-logging</artifactId>-->
+            <!--                    <groupId>org.springframework.boot</groupId>-->
+            <!--                </exclusion>-->
+            <!--            </exclusions>-->
         </dependency>
+
+        <!-- **************** 方式1：以logback作为实现 ******************* -->
+        <!--        &lt;!&ndash;-->
+        <!--                springboot 默认实现 spring-boot-starter-logging 就是这样配置的-->
+        <!--         &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>ch.qos.logback</groupId>-->
+        <!--            <artifactId>logback-classic</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; JUL桥接器，将jul的日志输出重定向到slf4j &ndash;&gt;-->
+        <!--        &lt;!&ndash; 需要下面代码进行桥接&ndash;&gt;-->
+        <!--        &lt;!&ndash; SLF4JBridgeHandler.removeHandlersForRootLogger();&ndash;&gt;-->
+        <!--        &lt;!&ndash; SLF4JBridgeHandler.install();&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.slf4j</groupId>-->
+        <!--            <artifactId>jul-to-slf4j</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; log4j2桥接器，将log4j2的日志输出重定向到slf4j  &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-to-slf4j</artifactId>-->
+        <!--        </dependency>-->
+        <!-- **************** 方式1：以logback作为实现 ******************* -->
+
+
+        <!-- **************** 方式2：以log4j2作为实现 ******************* -->
+        <!--        &lt;!&ndash; 使用log4j2作为slf4j的实现 &ndash;&gt;-->
+        <!--        &lt;!&ndash; 与 log4j-to-slf4j 冲突 死循环 &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-slf4j-impl</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; JUL桥接器，将jul的日志输出重定向到slf4j &ndash;&gt;-->
+        <!--        &lt;!&ndash; 需要下面代码进行桥接，在Slf4JLoggingSystem.configureJdkLoggingBridgeHandler()-->
+        <!--             里面调用了，如果是JavaLoggingSystem，则没调用，如果想他生效，则需要手动在 SpringApplication.run()-->
+        <!--             后调用，否则不生效，猜测是重新构建了Handler &ndash;&gt;-->
+        <!--        &lt;!&ndash; SLF4JBridgeHandler.removeHandlersForRootLogger();&ndash;&gt;-->
+        <!--        &lt;!&ndash; SLF4JBridgeHandler.install();&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.slf4j</groupId>-->
+        <!--            <artifactId>jul-to-slf4j</artifactId>-->
+        <!--        </dependency>-->
+        <!-- **************** 方式2：以log4j2作为实现 ******************* -->
+
+
+        <!-- **************** 方式3：以jul作为实现 ******************* -->
+        <!--        &lt;!&ndash; 使用jul作为slf4j的实现&ndash;&gt;-->
+        <!--        &lt;!&ndash; 与 jul-to-slf4j 冲突 死循环导致 java.lang.StackOverflowError&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.slf4j</groupId>-->
+        <!--            <artifactId>slf4j-jdk14</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; log4j2桥接器，将log4j2的日志输出重定向到slf4j  &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-to-slf4j</artifactId>-->
+        <!--        </dependency>-->
+        <!-- **************** 方式3：以jul作为实现 ******************* -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
