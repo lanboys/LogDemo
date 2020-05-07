@@ -89,6 +89,12 @@
         <!--        </dependency>-->
         <!-- **************** 方式3：以jul作为实现 ******************* -->
 
+        <!-- ch.qos.logback.core.filter.EvaluatorFilter -->
+        <dependency>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>janino</artifactId>
+            <version>3.1.2</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
