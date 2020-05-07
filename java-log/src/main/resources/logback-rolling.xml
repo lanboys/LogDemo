@@ -22,20 +22,21 @@
 
     <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/${LOG_NAME}.rolling-file.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${LOG_HOME}/${LOG_NAME}.rolling-file.%d{yyyy-MM-dd-HH-mm}.%i.log
             </fileNamePattern>
             <!-- 单位是基于 fileNamePattern 来设定的, 比如现在是按 mm 来滚动日志, 则单位是 分钟
              比如：当前时间是：第12分钟，将保留第11/10分钟日志, 清除第9分钟的日志，但是不会清除第8分及之前的日志(手动更改时间做实验) -->
             <!-- 清除定时任务在每次分割文件的时候发生 -->
-            <MaxHistory>2</MaxHistory>
+
             <!-- 如果不加 [.%i.], 只会生成第一次切割文件, 第二次切割文件重命名不了 -->
             <!--Renaming file [logs\test.rolling-file.log] to [logs\test.rolling-file.2019-06-23-11-00.log]-->
             <!--Failed to rename file [logs\test.rolling-file.log] as [logs\test.rolling-file.2019-06-23-11-00.log].-->
-            <timeBasedFileNamingAndTriggeringPolicy
-                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>2kB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
+
+            <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
+            <maxHistory>2</maxHistory>
+            <maxFileSize>2kB</maxFileSize>
+            <totalSizeCap>10kB</totalSizeCap>
         </rollingPolicy>
         <encoder>
             <pattern>${NORMAL_PATTERN}</pattern>
@@ -44,17 +45,17 @@
 
     <appender name="ROLLING_GZ" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/${LOG_NAME}.rolling-gz.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${LOG_HOME}/${LOG_NAME}.rolling-gz.%d{yyyy-MM-dd-HH-mm}.%i.log.gz
             </fileNamePattern>
-            <MaxHistory>2</MaxHistory>
             <!-- 如果不加 [.%i.], 只会生成第一次压缩文件, 第二次压缩文件重命名不了, 所以会剩下自动切割的缓存 tmp 文件 -->
             <!--Renaming file [logs\test.rolling-gz.log] to [logs\test.rolling-gz.log2304966301044948.tmp]-->
             <!--GZ compressing [logs\test.rolling-gz.log2304966301044948.tmp] as [logs\test.rolling-gz.2019-06-23-11-00.0.log.gz]-->
-            <timeBasedFileNamingAndTriggeringPolicy
-                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>2kB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
+
+            <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
+            <maxHistory>7</maxHistory>
+            <maxFileSize>2kB</maxFileSize>
+            <totalSizeCap>10kB</totalSizeCap>
         </rollingPolicy>
         <encoder>
             <pattern>${NORMAL_PATTERN}</pattern>
