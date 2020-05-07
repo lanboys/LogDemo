@@ -65,3 +65,44 @@
                  /org/springframework/boot/logging/log4j2/log4j2-file.xml
 	}
 ```
+##### Appender 里面拦截器分析
+
+```
+    UnsynchronizedAppenderBase.java
+
+    public void doAppend(E eventObject) {
+            .....
+            // 返回 deny 则不打印
+            if (getFilterChainDecision(eventObject) == FilterReply.DENY) {
+                return;
+            }
+
+            // ok, we now invoke derived class' implementation of append
+            this.append(eventObject);
+            .....
+    }
+
+    FilterAttachableImpl.java
+
+    /**
+     * Loop through the filters in the list. As soon as a filter decides on
+     * ACCEPT or DENY, then that value is returned. If all of the filters return
+     * NEUTRAL, then NEUTRAL is returned.
+     */
+    public FilterReply getFilterChainDecision(E event) {
+
+        final Filter<E>[] filterArrray = filterList.asTypedArray();
+        final int len = filterArrray.length;
+
+        for (int i = 0; i < len; i++) {
+            final FilterReply r = filterArrray[i].decide(event);
+            if (r == FilterReply.DENY || r == FilterReply.ACCEPT) {
+                return r;
+            }
+        }
+
+        // no decision
+        return FilterReply.NEUTRAL;
+    }
+```
+> 只要有拦截器返回 ACCEPT or DENY，就立马返回，不继续走拦截链了，类似于或的关系，所以特别注意不要在同一个拦截器中同时定义 ACCEPT or DENY，否则后面的拦截器就失效了，除非放最后面，或者有特殊需求

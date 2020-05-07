@@ -8,40 +8,17 @@
     <property name="LOG_NAME" value="test"/>
 
     <property name="LOG_PATTERN"
-              value="[logback1] %d{yyyy-MM-dd HH:mm:ss.SSS}, %msg%n"/>
+              value="[rolling-logback1] %d{yyyy-MM-dd HH:mm:ss.SSS}, %msg%n"/>
     <property name="NORMAL_PATTERN"
-              value="[logback2] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %logger{100} - %msg%n"/>
+              value="[rolling-logback2] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %logger{100} - %msg%n"/>
     <property name="SERIOUS_PATTERN"
-              value="[logback3] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %-60.60class [%4line] - %msg%n"/>
+              value="[rolling-logback3] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %-60.60class [%4line] - %msg%n"/>
 
     <Appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <Layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>${LOG_PATTERN}</Pattern>
         </Layout>
     </Appender>
-
-    <appender name="FILE_ALL" class="ch.qos.logback.core.FileAppender">
-        <file>${LOG_HOME}/${LOG_NAME}.all.log</file>
-        <append>true</append>
-        <encoder>
-            <pattern>${NORMAL_PATTERN}</pattern>
-        </encoder>
-    </appender>
-    <appender name="FILE_ERROR" class="ch.qos.logback.core.FileAppender">
-        <file>${LOG_HOME}/${LOG_NAME}.error.log</file>
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>ERROR</level>
-            <!-- 匹配上面级别时走onMatch策略(ACCEPT/DENY) -->
-            <!-- 不匹配时走onMismatch策略(ACCEPT/DENY) -->
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-            <!--<onMatch>DENY</onMatch>-->
-            <!--<onMismatch>DENY</onMismatch>-->
-        </filter>
-        <encoder>
-            <pattern>${NORMAL_PATTERN}</pattern>
-        </encoder>
-    </appender>
 
     <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/${LOG_NAME}.rolling-file.log</file>
@@ -84,36 +61,10 @@
         </encoder>
     </appender>
 
-    <!-- Additivity is set to true by default, that is children inherit the-->
-    <!-- appenders of their ancestors by default. If this variable is set to-->
-    <!-- <code>false</code> then the appenders located in the ancestors of this-->
-    <!-- logger will not be used. However, the children of this logger will inherit-->
-    <!-- its appenders, unless the children have their additivity flag set to-->
-    <!-- <code>false</code> too. See the user manual for more details.-->
-
-    <!--
-         additivity 表示是否继承父 logger 的 appender, 如果继承，则自己的appender和
-         父 logger 的appender 一起打印，否则只打印自己的appender
-    -->
-
     <ROOT level="INFO">
-        <!--<Appender-ref ref="STDOUT"/>-->
-        <!--<Appender-ref ref="FILE_ALL"/>-->
-        <Appender-ref ref="FILE_ERROR"/>
+        <Appender-ref ref="STDOUT"/>
         <Appender-ref ref="ROLLING_FILE"/>
         <Appender-ref ref="ROLLING_GZ"/>
     </ROOT>
-
-    <logger name="com.bing.lan.log.slf4j.cons" additivity="false">
-        <Appender-ref ref="FILE_ALL"/>
-    </logger>
-
-    <logger name="com.bing.lan.log.slf4j.cons.ConsoleLog">
-        <Appender-ref ref="STDOUT"/>
-    </logger>
-
-    <logger name="com.bing.lan.log.slf4j.FileLog" level="DEBUG">
-        <Appender-ref ref="FILE_ALL"/>
-    </logger>
 
 </Configuration>

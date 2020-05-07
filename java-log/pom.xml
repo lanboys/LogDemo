@@ -11,7 +11,7 @@
         <slf4j.version>1.7.30</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <log4j2.version>2.12.1</log4j2.version>
-<!--        <log4j2.version>2.13.2</log4j2.version>-->
+        <!--        <log4j2.version>2.13.2</log4j2.version>-->
     </properties>
 
     <dependencies>
@@ -38,6 +38,12 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- 使用jul作为slf4j的实现  -->
@@ -79,11 +85,18 @@
         </dependency>
 
         <!-- log4j2桥接器，将log4j2的日志输出重定向到slf4j  -->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.logging.log4j</groupId>-->
-<!--            <artifactId>log4j-to-slf4j</artifactId>-->
-<!--            <version>${log4j2.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-to-slf4j</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
+        <!-- ch.qos.logback.core.filter.EvaluatorFilter -->
+        <dependency>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>janino</artifactId>
+            <version>3.1.2</version>
+        </dependency>
     </dependencies>
     <build>
         <pluginManagement>
