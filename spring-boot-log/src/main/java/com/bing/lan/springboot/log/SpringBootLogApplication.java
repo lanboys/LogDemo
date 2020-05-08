@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class SpringBootLogApplication {
 
+    private static Logger rootLogger = LoggerFactory.getLogger("ROOT");
     private static Logger slf4jLogger = LoggerFactory.getLogger(SpringBootLogApplication.class);
     private static java.util.logging.Logger julLogger = java.util.logging.Logger.getLogger(SpringBootLogApplication.class.getName());
 
@@ -32,6 +33,7 @@ public class SpringBootLogApplication {
 
     @RequestMapping
     public String hello() {
+        rootLogger.info(" >>>>> rootLogger >>>>> hello spring-boot logger");
         slf4jLogger.info(" >>>>> slf4jLogger >>>>> hello spring-boot logger");
         julLogger.info(" >>>>> julLogger >>>>> hello spring-boot logger");
         return "hello spring-boot logger";
