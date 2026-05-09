@@ -24,9 +24,9 @@ public class SpringBootLogApplication {
     private static java.util.logging.Logger julLogger = java.util.logging.Logger.getLogger(SpringBootLogApplication.class.getName());
 
     public static void main(String[] args) {
-        //打印 Logback 内部状态, 有了logback.xml文件，开启debug会自动打印
-        //LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-        //StatusPrinter.print(lc);
+        // 打印 Logback 内部状态, 有了logback.xml文件，开启debug会自动打印
+        // LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+        // StatusPrinter.print(lc);
 
         SpringApplication.run(SpringBootLogApplication.class, args);
     }
@@ -36,6 +36,7 @@ public class SpringBootLogApplication {
         rootLogger.info(" >>>>> rootLogger >>>>> hello spring-boot logger");
         slf4jLogger.info(" >>>>> slf4jLogger >>>>> hello spring-boot logger");
         julLogger.info(" >>>>> julLogger >>>>> hello spring-boot logger");
+        rootLogger.error("错误信息", new Exception("因为什么错误信息"));
         return "hello spring-boot logger";
     }
 }
