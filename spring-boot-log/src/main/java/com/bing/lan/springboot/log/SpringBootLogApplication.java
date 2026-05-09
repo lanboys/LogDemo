@@ -24,7 +24,7 @@ public class SpringBootLogApplication {
     private static java.util.logging.Logger julLogger = java.util.logging.Logger.getLogger(SpringBootLogApplication.class.getName());
 
     public static void main(String[] args) {
-        //打印 Logback 内部状态, 有了logback.xml文件会自动打印
+        //打印 Logback 内部状态, 有了logback.xml文件，开启debug会自动打印
         //LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
         //StatusPrinter.print(lc);
 

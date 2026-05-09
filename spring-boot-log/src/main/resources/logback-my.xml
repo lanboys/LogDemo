@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true">
 
+    <!--18:56:10,893 |-INFO in ch.qos.logback.classic.joran.action.ContextNameAction - Setting logger context name as
+     [logback-my] -->
+    <!-- 上面debug开启后，会打印上面日志，这样可以知道是哪份配置文件起作用 -->
+    <contextName>logback-my</contextName>
+
     <property name="LOG_HOME" value="logs"/>
     <property name="LOG_NAME" value="log"/>
 
