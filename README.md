@@ -109,3 +109,10 @@
 
 #### Springboot中 日志level的优先级
 >优先级：-Dlogging.level.root=ERROR  >  application.yml > logback-spring.xml
+
+#### 在没有配置logback-spring.xml的前提下：
+
+- 不配置logging.file.xxx，就打印到了控制台，级别为 INFO
+- 如果只配置 logging.file.path=logs，logs目录下会有一个spring.log日志文件
+- 如果只配置 logging.file.name=logs\\log.log，logs目录下就会有一个log.log文件
+- 同时配置，以 logging.file.name 为准
