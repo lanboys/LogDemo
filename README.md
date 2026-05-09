@@ -106,3 +106,6 @@
     }
 ```
 > 只要有拦截器返回 ACCEPT or DENY，就立马返回，不继续走拦截链了，类似于或的关系，所以特别注意不要在同一个拦截器中同时定义 ACCEPT or DENY，否则后面的拦截器就失效了，除非放最后面，或者有特殊需求
+
+#### Springboot中 日志level的优先级
+>优先级：-Dlogging.level.root=ERROR  >  application.yml > logback-spring.xml
