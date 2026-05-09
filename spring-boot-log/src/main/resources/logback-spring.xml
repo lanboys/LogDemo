@@ -75,6 +75,24 @@
         </encoder>
     </appender>
 
+    <!-- 自定义数据库字段提取Appender -->
+    <appender name="DATABASE_APPENDER" class="com.bing.lan.springboot.log.appender.DatabaseAppender"/>
+
+    <!-- 异步Appender包装器 -->
+    <appender name="ASYNC_DATABASE" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 队列大小，默认256 -->
+        <queueSize>512</queueSize>
+        <!-- 当队列满时，是否丢弃TRACE、DEBUG、INFO级别的日志，默认false -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 引用实际的Appender -->
+        <appender-ref ref="DATABASE_APPENDER"/>
+    </appender>
+
+    <logger name="com.bing.lan" level="info" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ASYNC_DATABASE"/>
+    </logger>
+
     <root level="info">
         <springProfile name="default">
             <appender-ref ref="STDOUT"/>
